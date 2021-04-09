@@ -1,4 +1,5 @@
 import React from "react";
+import Jumbo from "../components/Jumbotron";
 
 class HomePage extends React.Component {
   state = {
@@ -6,7 +7,11 @@ class HomePage extends React.Component {
   };
 
   render() {
-    return <></>;
+    return (
+      <div>
+        <Jumbo />
+      </div>
+    );
   }
 }
 
