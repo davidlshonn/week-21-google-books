@@ -7,10 +7,10 @@ class NavBar extends React.Component {
     return (
       <>
         <Navbar>
-          <Navbar.Brand>Books</Navbar.Brand>
+          <Navbar.Brand>Google Books</Navbar.Brand>
           <Nav>
             <Nav.Link>
-              <Link to="/">Home</Link>
+              <Link to="/">Search</Link>
             </Nav.Link>
             <Nav.Link>
               <Link to="/savedbooks">Saved</Link>
