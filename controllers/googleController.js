@@ -2,20 +2,23 @@ const axios = require("axios");
 
 module.exports = {
   googleApiCall: function (request, response) {
+    // console.log("Hit");
     const { query: params } = request;
-    console.log(request);
+    // console.log(request.params);
     axios
-      .get("https://www.googleapis.com/books/v1/volumes?q=hunger")
+      .get("https://www.googleapis.com/books/v1/volumes", {
+        params,
+      })
       .then((results) =>
         results.data.items.filter(
           (result) =>
-            result.volumnInfo.title &&
+            result.volumeInfo.title &&
             result.volumeInfo.authors &&
-            result.volumnInfo.imageLinks.thumbnail &&
-            result.volumnInfo.description &&
-            result.volumnInfo.saleInfo.buyLink
+            result.volumeInfo.imageLinks.thumbnail &&
+            // result.searchInfo.textSnippet &&
+            result.volumeInfo.infoLink
         )
       )
-      .then((filteredBooks) => res.json(filteredBooks));
+      .then((filteredBooks) => response.json(filteredBooks));
   },
 };

@@ -19,8 +19,12 @@
   "homepage": "https://github.com/davidlshonn/week-21-google-books#readme",
   "dependencies": {
     "axios": "^0.21.1",
+    "concurrently": "^6.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.12.3"
+    "if-env": "^1.0.4",
+    "mongoose": "^5.12.3",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7"
   }
 }

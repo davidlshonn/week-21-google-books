@@ -14,9 +14,11 @@ class HomePage extends React.Component {
     this.setState({
       q: event.target.value,
     });
+    console.log(this.state.q);
   };
 
-  getGoogleBooks = () => {
+  getBooks = () => {
+    console.log(this.state.q);
     ApiCalls.getGoogleBooks(this.state.q).then((response) =>
       console.log(response)
     );
@@ -25,7 +27,7 @@ class HomePage extends React.Component {
   handleSubmit = (event) => {
     console.log(event);
     event.preventDefault();
-    this.getGoogleBooks();
+    this.getBooks();
   };
 
   render() {
