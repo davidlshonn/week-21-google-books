@@ -2,6 +2,7 @@ import React from "react";
 import ApiCalls from "../utils/ApiCall";
 import Jumbo from "../components/Jumbotron";
 import SearchForm from "../components/Form";
+import Card from "../components/BookCard";
 
 class HomePage extends React.Component {
   state = {
@@ -19,8 +20,9 @@ class HomePage extends React.Component {
 
   getBooks = () => {
     console.log(this.state.q);
-    ApiCalls.getGoogleBooks(this.state.q).then((response) =>
-      console.log(response)
+    ApiCalls.getGoogleBooks(this.state.q).then(
+      (response) => this.setState({ books: response.data })
+      // console.log(respons e.data)
     );
   };
 
@@ -39,6 +41,13 @@ class HomePage extends React.Component {
           handleSubmit={this.handleSubmit}
           q={this.state.q}
         />
+        {this.state.books.length ? (
+          this.state.books.map((book) => (
+            <Card key={book.id} title={book.volumeInfo.title} />
+          ))
+        ) : (
+          <p>Please search for books</p>
+        )}
       </div>
     );
   }
