@@ -43,7 +43,15 @@ class HomePage extends React.Component {
         />
         {this.state.books.length ? (
           this.state.books.map((book) => (
-            <Card key={book.id} title={book.volumeInfo.title} />
+            <Card
+              key={book.id}
+              title={book.volumeInfo.title}
+              subtitle={book.volumeInfo.subtitle}
+              authors={book.volumeInfo.authors}
+              thumbnail={book.volumeInfo.imageLinks.thumbnail}
+              description={book.volumeInfo.description}
+              infoLink={book.volumeInfo.infoLink}
+            />
           ))
         ) : (
           <p>Please search for books</p>

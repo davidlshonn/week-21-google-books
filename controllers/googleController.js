@@ -15,7 +15,8 @@ module.exports = {
             result.volumeInfo.title &&
             result.volumeInfo.authors &&
             result.volumeInfo.imageLinks.thumbnail &&
-            // result.searchInfo.textSnippet &&
+            result.volumeInfo.subtitle &&
+            result.volumeInfo.description &&
             result.volumeInfo.infoLink
         )
       )
