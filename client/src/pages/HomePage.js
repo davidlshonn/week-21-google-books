@@ -2,7 +2,7 @@ import React from "react";
 import ApiCalls from "../utils/ApiCall";
 import Jumbo from "../components/Jumbotron";
 import SearchForm from "../components/Form";
-import Card from "../components/BookCard";
+import Cards from "../components/BookCard";
 
 class HomePage extends React.Component {
   state = {
@@ -32,6 +32,24 @@ class HomePage extends React.Component {
     this.getBooks();
   };
 
+  handleSaveBook = (id) => {
+    console.log("Clicked");
+    const bookWithId = this.state.books.find(
+      (selectedBook) => selectedBook.id === id
+    );
+    ApiCalls.save({
+      id: bookWithId.id,
+      title: bookWithId.volumeInfo.title,
+      subtitle: bookWithId.volumeInfo.subtitle,
+      authors: bookWithId.volumeInfo.authors,
+      thumbnail: bookWithId.volumeInfo.imageLinks.thumbnail,
+      description: bookWithId.volumeInfo.description,
+      infoLink: bookWithId.volumeInfo.infoLink,
+    }).then(() => {
+      this.getBooks();
+    });
+  };
+
   render() {
     return (
       <div>
@@ -43,7 +61,7 @@ class HomePage extends React.Component {
         />
         {this.state.books.length ? (
           this.state.books.map((book) => (
-            <Card
+            <Cards
               key={book.id}
               title={book.volumeInfo.title}
               subtitle={book.volumeInfo.subtitle}
@@ -51,6 +69,16 @@ class HomePage extends React.Component {
               thumbnail={book.volumeInfo.imageLinks.thumbnail}
               description={book.volumeInfo.description}
               infoLink={book.volumeInfo.infoLink}
+              Button={() => (
+                <button
+                  onClick={() => {
+                    console.log(book.id);
+                    this.handleSaveBook(book.id);
+                  }}
+                >
+                  Save Book
+                </button>
+              )}
             />
           ))
         ) : (

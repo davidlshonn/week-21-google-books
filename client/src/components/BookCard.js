@@ -1,33 +1,32 @@
 import React from "react";
-import { Container } from "react-bootstrap";
-import { Row } from "react-bootstrap";
-import { Col } from "react-bootstrap";
+// import { Container } from "react-bootstrap";
+// import { Row } from "react-bootstrap";
+// import { Col } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
-function Card({ title, authors, thumbnail, subtitle, infoLink, description }) {
+function Cards({
+  title,
+  authors,
+  thumbnail,
+  subtitle,
+  infoLink,
+  description,
+  Button,
+}) {
   return (
-    <Container fluid={true}>
-      <Col>
-        <Row className="justify-content-center">
-          <h3>{title}</h3>
-        </Row>
-        <Row className="justify-content-center">
-          <h5>{authors}</h5>
-        </Row>
-        <Row className="justify-content-center">
-          <p>{subtitle}</p>
-        </Row>
-        <Row className="justify-content-center">
-          <img src={thumbnail} />
-        </Row>
-        <Row className="justify-content-center">
-          <p>{description}</p>
-        </Row>
-        <Row className="justify-content-center">
-          <button>{infoLink}</button>
-        </Row>
-      </Col>
-    </Container>
+    <Card style={{ width: "18rem" }}>
+      <Card.Img variant="top" src={thumbnail} />
+      <Card.Body>
+        <Card.Title>{title}</Card.Title>
+        <Button />
+        <Card.Title>{authors}</Card.Title>
+        <Card.Title>{subtitle}</Card.Title>
+        <Card.Text>{description}</Card.Text>
+        <button variant="primary">{infoLink}</button>
+      </Card.Body>
+    </Card>
   );
 }
 
-export default Card;
+export default Cards;

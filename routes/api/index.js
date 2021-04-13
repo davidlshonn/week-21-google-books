@@ -3,7 +3,7 @@ const path = require("path");
 const booksEndpoints = require("./booksRoutes");
 const googleEndpoints = require("./googleRoute");
 
-//router.use("/books", booksEndpoints);
+router.use("/books", booksEndpoints);
 router.use("/google", googleEndpoints);
 
 router.use(function (request, response) {
